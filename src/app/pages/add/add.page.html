@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="tertiary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>List name</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label> {{ list.title }} </ion-label>
+      <ion-input type="text" [(ngModel)]="itemName" clear-input (keyup.enter)="addItem()"></ion-input>
+    </ion-item>
+  </ion-list>
+  
+  <ion-list>
+    <ion-list-header>
+      <ion-label>To do list</ion-label>
+    </ion-list-header>
+  </ion-list>
+  <ion-item *ngFor="let item of list.items">
+    <ion-checkbox slot="start"
+                  color="tertiary"
+                  [(ngModel)]="item.completed"></ion-checkbox>
+    <ion-label>{{ item.desc }}</ion-label>
+  </ion-item>
+</ion-content>
